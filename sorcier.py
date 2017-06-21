@@ -1,6 +1,6 @@
-from personnage import personnage
+from personnage import Personnage
 
-class Sorcier(personnage):
+class Sorcier(Personnage):
     """
     Classe représentant un Sorcier. Hérite de Personnage.
     Attributes:
