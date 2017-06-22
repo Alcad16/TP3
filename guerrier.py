@@ -109,6 +109,7 @@ if __name__ == "__main__":
     ouellet = Guerrier("Ouellet", 30, 50)
     assert ouellet.nom == "Ouellet"
     assert ouellet.energie_courante == 30
+    assert ouellet.valider_force()
     assert ouellet.force == 50
     ouellet.attaquer(20)
     assert ouellet.energie_courante == 10
@@ -122,5 +123,3 @@ if __name__ == "__main__":
     ouel = Guerrier("Ouel", 30, 72)
     ouel.reset_energie()
     assert ouel.force == 80
-
-#hello
