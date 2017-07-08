@@ -84,7 +84,7 @@ class Personnage:
         la méthode (polymorphisme).
         """
 
-    def attaquer(self):
+    def attaquer(self, methode):
         """
         Méthode abstraite (sans code) utile pour l’héritage, cela forcera la classe dérivée à surcharger 
         la méthode (polymorphisme).
@@ -92,9 +92,12 @@ class Personnage:
 
     def to_string(self):
         """
-        Affiche l'énergie du personnage en question
+        Retourne une chaîne du genre : " Nom de Personnage, a une énergie de valeur de 
+        l’énergie."
+
+        Returns (str): La chaîne représentant le personnage. 
         """
-        print("{} a une énergie de {}".format(self.get_nom(), self.get_energie_courante()))
+        return "{} a une énergie de {}".format(self.get_nom(), self.get_energie_courante())
 
     def get_energie_courante(self):
         """
@@ -103,12 +106,10 @@ class Personnage:
         """
         return self.energie_courante
 
-    def set_energie_courante(self, energie_courante):
+    def set_energie_courante(self):
         """
         Assigne l'énergie courante si elle est valide. 
-        Args:
-            energie_courante (int): L'énergie courante 
-
+        
         Returns (bool): True si l'assignation a réussi, False sinon.
         """
         if self.valider_energie_courante():
@@ -123,11 +124,9 @@ class Personnage:
         """
         return self.nom
 
-    def set_nom(self, nom):
+    def set_nom(self):
         """
         Assigne le nom s'il est valide. 
-        Args:
-            nom (str): Le nom
 
         Returns (bool): True si l'assignation a réussi, False sinon.
         """
@@ -145,11 +144,9 @@ class Personnage:
         return self.energie_depart
 
 
-    def set_energie_depart(self, energie_depart):
+    def set_energie_depart(self):
         """
         Assigne l'énergie de départ si elle est valide. 
-        Args:
-            energie_depart (int): L'énergie de départ 
 
         Returns (bool): True si l'assignation a réussi, False sinon.
         """
@@ -166,8 +163,7 @@ if __name__ == "__main__":
     alicia.energie_courante = 20
     alicia.reset_energie()
     assert alicia.energie_courante == 30
-    assert alicia.est_mort() == False
-    assert alicia.valider_energie_courante() == True
-    assert alicia.valider_nom() == True
-    assert alicia.valider_energie_depart() == True
-    
+    assert not alicia.est_mort()
+    assert alicia.valider_energie_courante()
+    assert alicia.valider_nom()
+    assert alicia.valider_energie_depart()
