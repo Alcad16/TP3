@@ -20,12 +20,17 @@ class Util:
             fichier (str): Le nom du fichier à lire 
             liste_personnages (list): La liste de personnages que la méthode doit remplir.  
 
-        Returns:
+        Returns: (bool) Vrai si tout c'est bien passé
 
         """
         try:
-            pass
-        except Exception:
+            fichier_lecture = open(fichier, "r")
+            for line in fichier_lecture:
+                currentline = line.split(";")
+                liste_personnages.append(currentline)
+            fichier_lecture.close()
+            return True
+        except IOError:
             print(sys.stderr, "erreur d'execution dans gestionOuvrir")
             sys.exit(1)
 
@@ -36,10 +41,20 @@ class Util:
         Permet d’écrire la liste de personnages reçue en paramètre dans le fichier de personnages aussi reçu en entrée.
         Pour plus de détails, voir l'énoncé du travail.
         Args:
-            fichier: 
-            liste_personnages: 
+            fichier (str): Le nom du fichier où écrire
+            liste_personnages (list): La liste de personnage que la méthode doit retranscrire 
+        Returns (bool): Vrai si tout s'est bien passé
         """
-        pass
+        try:
+            fichier_ecriture = open(fichier, "w")
+            for liste in liste_personnages:
+                fichier_ecriture.write(";".join(liste))
+            fichier_ecriture.close()
+            return True
+        except IOError:
+            print(sys.stderr, "erreur d'execution dans gestionOuvrir")
+            sys.exit(1)
+
 
     @staticmethod
     def saisir_objet_entier(question):
